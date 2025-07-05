@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/jquery-ui.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="/static/css/aos.css">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <title>Actualizar equipos</title>
+</head>
+<body class="body-dash">
+    <nav class="nav-bar">
+        <ul class="list">
+            <li class="list-item"><a href="{{  url_for('dashboard', username = 'hola')  }}" class="item-logo">Panel Administrativo</a></li>
+            <div class="container-user">
+                <li class="list-item">{{ username }}</li>
+                <li class="list-item"><a href="{{ url_for('login') }}">Cerrar Sesion</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div class="container container-form"> 
+        <h1>Actualizar Equipo</h1>
+        <form action="" method="POST" class="form">
+            <label for="equipo">Equipo</label>
+            <input type="text" name="equipo" id="equipo">
+            <label for="ficha">Ficha</label>
+            <input type="text" name="ficha" id="ficha">
+            <label for="jornada">Jornada</label>
+            <select name="jornada" id="jornada">
+                <option value="" disabled selected>Selecione una jornada</option>
+                <option value="Mañana">Mañana</option>
+                <option value="Tarde">Tarde</option>
+            </select>
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado">
+                <option value="" disabled selected>Selecione un estado...</option>
+                <option value="Clasificado">Clasificado</option>
+                <option value="Eliminado">Eliminado</option>
+            </select>
+            <input type="submit" value="Registrar Equipo" class="btn btn-form">
+            <p>¿Desea volver? <a href="{{ url_for('dashboard', username = 'hola') }}">Click aqui</a></p>
+        </form>
+    </div>
+</body>
+</html>

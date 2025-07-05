@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/jquery-ui.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="/static/css/aos.css">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <title>Dashboard</title>
+</head>
+<body class="body-dash">
+    <nav class="nav-bar">
+        <ul class="list">
+            <li class="list-item"><a href="{{  url_for('dashboard', username = 'hola')  }}" class="item-logo">Panel Administrativo</a></li>
+            <div class="container-user">
+                <li class="list-item">{{ username }}</li>
+                <li class="list-item"><a href="{{ url_for('login') }}">Cerrar Sesion</a></li>
+            </div>
+        </ul>
+    </nav>
+    <section class="section-table">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            
+            {% if messages %}
+            
+                {% for category, message in messages %}
+                
+                    <div class="mensajes {{ category }}"> 
+                        {{ message }}
+                    </div>
+                
+                {% endfor %}
+            
+            {% endif %}
+            
+        {% endwith %}
+
+        <h1>Panel Administrativo Interfichas CUP</h1>
+        <a href="{{ url_for('registrar_equipos') }}"><button type="button" class="btn btn-form">Agregar Equipo</button></a>
+        <table class="table-equipo">
+            <thead class="table-thead">
+                <tr>
+                    <th>ID</th>
+                    <th>Equipo</th>
+                    <th>Ficha</th>
+                    <th>Jornada</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if lista %}
+                {% for item in lista %}
+                <tr>
+                    <td> {{ item.id }} </td>
+                    <td> {{ item.equipo }} </td>
+                    <td> {{ item.ficha }} </td>
+                    <td> {{ item.jornada }} </td>
+                    <td> {{ item.estado }} </td>
+                    <td>
+                        <a href="{{ url_for('actualizar_equipos', id = item.id ) }}" class="container-btn">
+                            <button type="button" class="btn btn-form">Actualizar</button>
+                        </a>
+                        <a href="{{ url_for('eliminar_equi', id = item.id) }}" class="container-btn">
+                            <button type="button" class="btn btn-form">Eliminar</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

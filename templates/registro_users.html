@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/jquery-ui.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="/static/css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="/static/css/aos.css">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container__back">
+        <a href="{{ url_for( 'login' ) }}">
+            <img src="/static/images/back.png" alt="" width="50px">
+        </a>
+    </div>
+    <div class=" container container-form">
+        <h2 class="title-forms">Registro de usuarios</h2>
+        <form method="post" class="form">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            
+            {% for message in messages %}
+            
+            <div class="mensajes"> 
+                {{ message }}
+            </div>
+            
+            {% endfor %}
+            
+            {% endif %}
+            
+            {% endwith %}
+            <label for="username">Usuario</label>
+            <input type="text" name="username" id="username">
+            
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" id="pass">
+            <input type="submit" value="Registrarse" class="btn btn-form">
+        </form>
+    </div>
+</body>
+</html>
